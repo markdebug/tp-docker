@@ -28,3 +28,11 @@ func GetAllImages() []Image {
 	}
 	return result
 }
+
+func ImageRemove(id string) []types.ImageDeleteResponseItem {
+	data, err := docker_client.GetDockerClient().ImageRemove(context.Background(), id, types.ImageRemoveOptions{})
+	if err != nil {
+		panic(err)
+	}
+	return data
+}
